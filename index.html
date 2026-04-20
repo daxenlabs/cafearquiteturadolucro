@@ -4,8 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Café Arquitetura do Lucro — 13 de Maio · São Paulo</title>
+<meta name="description" content="Café Arquitetura do Lucro — encontro presencial em São Paulo para empresários que faturam acima de R$100k/mês. 13 de Maio de 2026.">
+<meta name="theme-color" content="#0D0D0D">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -34,8 +37,11 @@ body {
   font-size: 16px;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
   overflow-x: hidden;
 }
+img { max-width: 100%; height: auto; }
 
 /* ─── TOPBAR ─── */
 .topbar {
@@ -55,15 +61,15 @@ body {
   min-height: 92vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  align-items: center;
+  align-items: end;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 80px 48px 60px;
+  padding: 80px 48px 0;
   gap: 60px;
   position: relative;
 }
 
-.hero-left { z-index: 2; }
+.hero-left { z-index: 2; padding-bottom: 60px; }
 
 .hero-eyebrow {
   display: inline-flex;
@@ -152,63 +158,29 @@ body {
 .hero-right {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
-  height: 500px;
+  overflow: hidden;
 }
 .hero-glow {
   position: absolute;
-  bottom: 40px;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 360px;
-  height: 360px;
+  width: 110%;
+  height: 80%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,229,160,0.2) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0,229,160,0.15) 0%, transparent 70%);
   pointer-events: none;
 }
-.hero-cards {
+.hero-photo {
   position: relative;
   z-index: 2;
-  display: flex;
-  gap: 20px;
-  align-items: flex-end;
-}
-.avatar-card {
-  background: var(--bg3);
-  border: 1px solid var(--border-neon);
-  border-radius: 12px;
-  padding: 28px 22px;
-  text-align: center;
-  width: 170px;
-}
-.avatar-card:first-child { margin-bottom: 48px; }
-.avatar-circle {
-  width: 76px; height: 76px;
-  border-radius: 50%;
-  background: var(--bg4);
-  border: 2px solid var(--neon);
-  margin: 0 auto 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  font-weight: 900;
-  color: var(--neon);
-  box-shadow: 0 0 24px var(--neon-glow);
-}
-.avatar-name {
-  font-size: 14px;
-  font-weight: 800;
-  color: var(--white);
-  margin-bottom: 3px;
-  text-transform: uppercase;
-}
-.avatar-role {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--neon);
-  letter-spacing: 0.06em;
+  width: 100%;
+  max-width: 540px;
+  height: auto;
+  border-radius: 16px 16px 0 0;
+  object-fit: cover;
 }
 
 /* ─── SECTIONS ─── */
@@ -757,26 +729,98 @@ footer a { color: #383838; text-decoration: none; }
   justify-content: space-between;
   gap: 16px;
 }
-.sticky-text { font-size: 12px; color: #666; font-weight: 600; }
+.sticky-text { font-size: 12px; color: #666; font-weight: 600; min-width: 0; }
 .sticky-text strong { color: var(--white); display: block; font-size: 14px; font-weight: 800; text-transform: uppercase; }
-.sticky-btn { background: var(--neon); color: var(--bg); font-size: 12px; font-weight: 900; padding: 10px 18px; border-radius: 6px; text-decoration: none; white-space: nowrap; flex-shrink: 0; letter-spacing: 0.08em; text-transform: uppercase; }
+.sticky-btn { background: var(--neon); color: var(--bg); font-size: 12px; font-weight: 900; padding: 12px 20px; border-radius: 6px; text-decoration: none; white-space: nowrap; flex-shrink: 0; letter-spacing: 0.08em; text-transform: uppercase; min-height: 44px; display: flex; align-items: center; }
 
-/* ─── RESPONSIVE ─── */
+/* ─── TOUCH DEVICES ─── */
+@media (hover: none) {
+  .block-card:hover,
+  .testi-card:hover,
+  .about-card:hover,
+  .delivers-list li:hover,
+  .faq-q:hover { transform: none; background: inherit; border-color: inherit; }
+  .block-card:hover::after { transform: scaleX(0); }
+  .cta-btn:hover, .cta-full:hover { transform: none; box-shadow: none; }
+  .cta-btn:active, .cta-full:active { transform: scale(0.97); }
+}
+
+/* ─── RESPONSIVE: TABLET ─── */
 @media (max-width: 900px) {
-  .hero { grid-template-columns: 1fr; padding: 60px 24px 40px; min-height: auto; gap: 40px; }
-  .hero-right { height: 240px; }
+  .hero { grid-template-columns: 1fr; padding: 48px 24px 0; min-height: auto; gap: 32px; }
+  .hero-left { padding-bottom: 0; text-align: center; }
+  .hero-sub { margin-left: auto; margin-right: auto; }
+  .hero-eyebrow { margin-bottom: 20px; }
+  .hero-pills { justify-content: center; }
+  .hero-right { justify-content: center; }
+  .hero-photo { max-width: 380px; }
+  .section-wrap { padding: 64px 20px; }
+  .section-wrap-wide { padding: 64px 20px; }
   .blocks-grid { grid-template-columns: repeat(2, 1fr); }
   .testi-grid { grid-template-columns: 1fr; }
   .about-grid { grid-template-columns: 1fr; }
   .forwho-grid { grid-template-columns: 1fr; }
+  .callout-neon { padding: 28px 24px; }
+  .final-section { padding: 64px 20px; }
+  .offer-section { padding: 64px 20px; }
 }
+
+/* ─── RESPONSIVE: MOBILE ─── */
 @media (max-width: 600px) {
-  .blocks-grid { grid-template-columns: 1fr; }
-  .hero h1 { font-size: 34px; }
-  .about-card { flex-direction: column; }
-  .offer-body { padding: 28px 22px; }
+  .topbar { font-size: 10px; padding: 8px 16px; letter-spacing: 0.1em; }
+  .hero { padding: 36px 18px 0; gap: 28px; }
+  .hero h1 { font-size: 30px; margin-bottom: 14px; }
+  .hero-eyebrow { font-size: 10px; padding: 5px 12px; margin-bottom: 16px; }
+  .hero-sub { font-size: 14px; margin-bottom: 24px; }
+  .hero-photo { max-width: 300px; }
+  .hero-pills { gap: 8px; }
+  .hero-pill { font-size: 12px; padding: 6px 10px; }
+  .cta-btn { font-size: 13px; padding: 15px 28px; width: 100%; text-align: center; }
+  .section-wrap { padding: 48px 16px; }
+  .section-wrap-wide { padding: 48px 16px; }
+  .section-title { font-size: 24px; }
+  .body-text { font-size: 14px; }
+  .pain-list li { padding: 14px 16px; font-size: 14px; gap: 10px; }
+  .pain-icon { width: 24px; height: 24px; font-size: 10px; }
+  .callout-neon { padding: 24px 18px; margin: 28px 0; }
+  .callout-neon p { font-size: 16px; }
+  .callout-attr { font-size: 12px; }
+  .event-name-big { font-size: clamp(32px, 10vw, 50px); }
+  .blocks-grid { grid-template-columns: 1fr; gap: 12px; }
+  .block-card { padding: 20px 18px; }
+  .about-card { flex-direction: column; padding: 24px 20px; gap: 14px; }
+  .about-avatar { width: 56px; height: 56px; font-size: 18px; }
+  .about-name { font-size: 16px; }
+  .about-desc { font-size: 12px; }
+  .testi-card { padding: 20px 18px; }
+  .testi-text { font-size: 13px; }
+  .forwho-col h3 { font-size: 10px; padding: 10px 14px; }
+  .forwho-list li { padding: 11px 14px; font-size: 12px; }
+  .faq-q { padding: 16px 18px; font-size: 13px; gap: 12px; }
+  .faq-a { padding: 0 18px 16px; font-size: 13px; }
+  .offer-section { padding: 48px 16px; }
+  .offer-card-top { padding: 12px 18px; }
+  .offer-card-top p { font-size: 9px; letter-spacing: 0.12em; }
+  .offer-body { padding: 28px 20px; }
+  .offer-title { font-size: 20px; margin-bottom: 24px; }
+  .offer-includes li { font-size: 13px; }
+  .price-main { font-size: 52px; }
+  .price-currency { font-size: 22px; }
+  .cta-full { font-size: 13px; padding: 18px 24px; }
+  .final-section { padding: 56px 18px; }
+  .final-section p { font-size: 14px; margin-bottom: 28px; }
+  .urgency-bar p { font-size: 11px; }
   .sticky-cta { display: flex; }
   body { padding-bottom: 68px; }
+}
+
+/* ─── RESPONSIVE: SMALL MOBILE ─── */
+@media (max-width: 380px) {
+  .hero h1 { font-size: 26px; }
+  .hero-photo { max-width: 240px; }
+  .section-title { font-size: 22px; }
+  .price-main { font-size: 44px; }
+  .offer-body { padding: 22px 16px; }
 }
 </style>
 </head>
@@ -807,18 +851,7 @@ footer a { color: #383838; text-decoration: none; }
     </div>
     <div class="hero-right">
       <div class="hero-glow"></div>
-      <div class="hero-cards">
-        <div class="avatar-card">
-          <div class="avatar-circle">L</div>
-          <p class="avatar-name">Lucas</p>
-          <p class="avatar-role">Aceleração</p>
-        </div>
-        <div class="avatar-card">
-          <div class="avatar-circle">R</div>
-          <p class="avatar-name">Rebeca</p>
-          <p class="avatar-role">Diagnóstico</p>
-        </div>
-      </div>
+      <img src="assets/fotobecaelucas.webp" alt="Lucas e Rebeca — Arquitetura do Lucro" class="hero-photo" fetchpriority="high" decoding="async" width="540" height="600">
     </div>
   </div>
 </section>
@@ -912,10 +945,6 @@ footer a { color: #383838; text-decoration: none; }
 
 <div class="divider-neon"></div>
 
-</section>
-
-<div class="divider-neon"></div>
-
 <!-- ════════════════ QUEM CONDUZ ════════════════ -->
 <section class="alt-bg">
   <div class="section-wrap-wide">
@@ -928,7 +957,7 @@ footer a { color: #383838; text-decoration: none; }
         <div class="about-avatar">L</div>
         <div>
           <p class="about-name">Lucas</p>
-          <p class="about-role">Fundador · Aceleração de Negócios</p>
+          <p class="about-role">Gestão Financeira</p>
           <p class="about-desc">Especialista em inteligência financeira de alta complexidade e engenharia de indicadores de performance. Conduziu o diagnóstico de dezenas de empresas entre R$100k e R$1M/mês, ajudando empresários a identificarem a margem de lucro real e a liderarem com segurança financeira e sustentabilidade do negócio.</p>
         </div>
       </div>
@@ -936,7 +965,7 @@ footer a { color: #383838; text-decoration: none; }
         <div class="about-avatar">R</div>
         <div>
           <p class="about-name">Rebeca</p>
-          <p class="about-role">Co-fundadora · Gestão Estratégica</p>
+          <p class="about-role">Gestão Estratégica</p>
           <p class="about-desc">Consultora e mentora com mais de uma década dedicada à aceleração de negócios através da gestão estratégica. Especialista em conduzir a transição de empresas dependentes de fundadores para organizações de alta performance. Rebeca desenha processos que eliminam gargalos e permitem ao empresário focar na expansão e visão de longo prazo.</p>
         </div>
       </div>
@@ -968,7 +997,7 @@ footer a { color: #383838; text-decoration: none; }
       </div>
       <div class="testi-card">
         <div class="testi-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
-        <p class="testi-text">"Sempre soube que tinha gargalos, mas nunca consegui ver todos ao mesmo tempo. O diagnóstico 360 fez exatamente isso. Hoje sei para onde olhar primeiro."</p>
+        <p class="testi-text">"Sempre soube que tinha gargalos, mas nunca consegui ver todos ao mesmo tempo. A atuação da Rebeca e do Lucas mudou meu jogo. Hoje sei para onde olhar primeiro."</p>
         <p class="testi-name">Fernando L.</p>
         <p class="testi-biz">Clínica Médica · R$220k/mês</p>
       </div>
@@ -1011,6 +1040,62 @@ footer a { color: #383838; text-decoration: none; }
       </div>
     </div>
     <p style="text-align: center; font-size: 14px; color: var(--muted); font-weight: 600; margin-top: 28px;">Se você se identificou com o lado esquerdo, este café foi feito para você.</p>
+  </div>
+</section>
+
+<div class="divider-neon"></div>
+
+<!-- ════════════════ FAQ ════════════════ -->
+<section class="alt-bg2">
+  <div class="section-wrap">
+    <div style="text-align: center; margin-bottom: 40px;">
+      <span class="section-label">Perguntas Frequentes</span>
+      <h2 class="section-title">Ainda tem<br><span class="neon">dúvidas?</span></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>Preciso ter uma empresa grande para participar?</span>
+          <span class="faq-arrow">+</span>
+        </div>
+        <div class="faq-a">Não. O café foi desenhado para empresários que já faturam acima de R$100k/mês e sentem que o lucro não acompanha o crescimento. Se essa é a sua realidade, independentemente do tamanho da equipe, o evento é para você.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>O evento é presencial mesmo? Terá versão online?</span>
+          <span class="faq-arrow">+</span>
+        </div>
+        <div class="faq-a">Sim, é 100% presencial em São Paulo, no dia 13 de maio de 2026. Não haverá versão online. O formato intimista e o networking são parte essencial da experiência.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>O que exatamente vou receber no dia?</span>
+          <span class="faq-arrow">+</span>
+        </div>
+        <div class="faq-a">Você receberá um Plano de Aceleração de 90 dias personalizado para o seu negócio, acesso direto a Lucas e Rebeca durante todo o evento, e networking com outros empresários que faturam +R$100k/mês.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>Como funciona o Diagnóstico 360?</span>
+          <span class="faq-arrow">+</span>
+        </div>
+        <div class="faq-a">O Diagnóstico 360 avalia 6 blocos do seu negócio — Marketing & IA, Vendas, Financeiro, Gestão, Processos e Pessoas — e atribui um ranking de A até F para cada um, revelando onde está o vazamento de margem da sua empresa.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>R$97 é o valor total? Tem algum custo adicional?</span>
+          <span class="faq-arrow">+</span>
+        </div>
+        <div class="faq-a">R$97 é o valor total do ingresso. Não há cobranças adicionais. O pagamento é único e a confirmação é imediata.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>E se eu não puder comparecer no dia?</span>
+          <span class="faq-arrow">+</span>
+        </div>
+        <div class="faq-a">Como o evento é presencial e as vagas são limitadas, não oferecemos reembolso. Porém, você pode transferir seu ingresso para outro empresário que se encaixe no perfil do evento.</div>
+      </div>
+    </div>
   </div>
 </section>
 
